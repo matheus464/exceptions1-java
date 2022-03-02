@@ -44,6 +44,7 @@ public class Reservation {
 		return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 	}
 
+<<<<<<< HEAD:src/model/entities/Reservation.java
 	public void updateDates(Date checkIn, Date checkOut) {
 		Date now = new Date();
 		if (checkIn.before(now) || checkOut.before(now)) {
@@ -52,8 +53,21 @@ public class Reservation {
 		if (!checkOut.after(checkIn)) {
 			throw new DomainException("Check-out date must be after check-in date");
 		}
+=======
+	public String updateDates(Date checkIn, Date checkOut) {
+		Date now = new Date();
+		if (checkIn.before(now) || checkOut.before(now)) {
+			return "Reservation dates for update must be future";
+		}
+		else if (!checkOut.after(checkIn)) {
+			return"Check-out date must be after check-in date";
+		} 
+		else {
+>>>>>>> 47f5b998dbe57824d8ef4025f76b4814f7ad35a0:src/entities/Reservation.java
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
+		return null;
+		}
 	}
 
 	@Override
